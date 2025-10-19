@@ -30,4 +30,52 @@ public class Payment {
         this.payment_status = payment_status;
         this.payment_date = payment_date;
     }
+
+    public void setPayment_id(int payment_id) {
+        this.payment_id = payment_id;
+    }
+
+    public void setBooking_id(int booking_id) {
+        this.booking_id = booking_id;
+    }
+
+    public void setPayment_mode(PaymentMode payment_mode) {
+        this.payment_mode = payment_mode;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public void setPayment_status(PaymentStatus payment_status) {
+        this.payment_status = payment_status;
+    }
+
+    public void setPayment_date(LocalDateTime payment_date) {
+        this.payment_date = payment_date;
+    }
+
+    public int getPayment_id() {
+        return payment_id;
+    }
+
+    public int getBooking_id() {
+        return booking_id;
+    }
+
+    public PaymentMode getPayment_mode() {
+        return payment_mode;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public PaymentStatus getPayment_status() {
+        return payment_status;
+    }
+
+    public LocalDateTime getPayment_date() {
+        return payment_date;
+    }
 }

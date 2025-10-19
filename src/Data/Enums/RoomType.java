@@ -14,4 +14,24 @@ public enum RoomType {
     public String getValue() {
         return value;
     }
+    public static RoomType setValue(String  type){
+        RoomType roomType;
+        if (type.equalsIgnoreCase(RoomType.Single.getValue())||
+                type.equalsIgnoreCase(RoomType.Double.getValue())||
+                type.equalsIgnoreCase(RoomType.Suite.getValue())||
+                type.equalsIgnoreCase(RoomType.Deluxe.getValue()))
+        {
+            if (type.equalsIgnoreCase(RoomType.Single.getValue())){
+                roomType=RoomType.Single;
+            } else if (type.equalsIgnoreCase(RoomType.Double.getValue())) {
+                roomType=RoomType.Double;
+            } else if (type.equalsIgnoreCase(RoomType.Suite.getValue())) {
+                roomType=RoomType.Suite;
+            }else {
+                roomType=RoomType.Deluxe;
+            }
+            return roomType;
+        }
+        return null;
+    }
 }

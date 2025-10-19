@@ -11,4 +11,21 @@ public enum RoomStatus {
     public String getValue() {
         return value;
     }
+    public static RoomStatus setValue(String status){
+       RoomStatus roomStatus;
+        if (status.equalsIgnoreCase(RoomStatus.Available.getValue())||
+                status.equalsIgnoreCase(RoomStatus.Booked.getValue())||
+                status.equalsIgnoreCase(RoomStatus.Maintenance.getValue()))
+        {
+            if (status.equalsIgnoreCase(RoomStatus.Available.getValue())){
+               roomStatus =RoomStatus.Available;
+            } else if (status.equalsIgnoreCase(RoomStatus.Booked.getValue())) {
+                roomStatus=RoomStatus.Booked;
+            } else  {
+                roomStatus=RoomStatus.Maintenance;
+            }
+            return roomStatus;
+        }
+        return null;
+    }
 }

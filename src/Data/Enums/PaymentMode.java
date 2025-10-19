@@ -11,4 +11,18 @@ public enum PaymentMode {
     public String getValue() {
         return value;
     }
+
+    public static PaymentMode setValue(String value) {
+        PaymentMode mode=null;
+        if (value.equalsIgnoreCase("cash")){
+            mode=PaymentMode.Cash;
+        } else if (value.equalsIgnoreCase("card")) {
+            mode=PaymentMode.Card;
+        } else if (value.equalsIgnoreCase("upi")) {
+            mode=PaymentMode.Upi;
+        } else if (value.equalsIgnoreCase("netbanking")) {
+            mode=PaymentMode.Netbanking;
+        }
+        return mode;
+    }
 }

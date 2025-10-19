@@ -11,4 +11,14 @@ public enum StaffStatus {
     public String getValue() {
         return value;
     }
+
+    public static StaffStatus setValue(String value) {
+        StaffStatus status=null;
+        if (value.equalsIgnoreCase("active")){
+            status=StaffStatus.Active;
+        } else if (value.equalsIgnoreCase("inactive")) {
+            status=StaffStatus.InActive;
+        }
+        return status;
+    }
 }

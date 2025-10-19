@@ -37,4 +37,67 @@ public class Booking {
         this.created_at = created_at;
     }
 
+    public int getBooking_id() {
+        return booking_id;
+    }
+
+    public int getCustomer_id() {
+        return customer_id;
+    }
+
+    public int getRoom_id() {
+        return room_id;
+    }
+
+    public Date getCheck_in_date() {
+        return check_in_date;
+    }
+
+    public Date getCheck_out_date() {
+        return check_out_date;
+    }
+
+    public BookingStatus getBooking_status() {
+        return booking_status;
+    }
+
+    public double getTotal_amount() {
+        return total_amount;
+    }
+
+    public LocalDateTime getCreated_at() {
+        return created_at;
+    }
+
+    public void setBooking_id(int booking_id) {
+        this.booking_id = booking_id;
+    }
+
+    public void setCustomer_id(int customer_id) {
+        this.customer_id = customer_id;
+    }
+
+    public void setRoom_id(int room_id) {
+        this.room_id = room_id;
+    }
+
+    public void setCheck_in_date(Date check_in_date) {
+        this.check_in_date = check_in_date;
+    }
+
+    public void setCheck_out_date(Date check_out_date) {
+        this.check_out_date = check_out_date;
+    }
+
+    public void setBooking_status(BookingStatus booking_status) {
+        this.booking_status = booking_status;
+    }
+
+    public void setTotal_amount(double total_amount) {
+        this.total_amount = total_amount;
+    }
+
+    public void setCreated_at(LocalDateTime created_at) {
+        this.created_at = created_at;
+    }
 }

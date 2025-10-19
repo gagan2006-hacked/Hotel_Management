@@ -15,4 +15,18 @@ public enum BookingStatus {
     public String getValue() {
         return value;
     }
+
+    public static BookingStatus setValue(String value) {
+        BookingStatus status=null;
+        if (value.equalsIgnoreCase("confirmed")){
+            status=BookingStatus.Confirmed;
+        } else if (value.equalsIgnoreCase("checked_in")) {
+            status=BookingStatus.Checked_in;
+        } else if (value.equalsIgnoreCase("checked_out")) {
+            status=BookingStatus.Checked_out;
+        }else if (value.equalsIgnoreCase("cancelled")){
+            status=BookingStatus.Cancelled;
+        }
+        return status;
+    }
 }

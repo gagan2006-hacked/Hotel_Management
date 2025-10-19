@@ -20,10 +20,43 @@ public class Customer {
     private String address;
     private LocalDateTime created_at;
 
+    public Customer(int customer_id, String name, String email, String phone, String address, LocalDateTime created_at) {
+        this.customer_id = customer_id;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+        this.created_at = created_at;
+    }
+
     public Customer(String name, String email, String phone, String address) {
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.address = address;
+    }
+
+    public int getCustomer_id() {
+        return customer_id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public LocalDateTime getCreated_at() {
+        return created_at;
     }
 }
