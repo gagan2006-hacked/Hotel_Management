@@ -309,4 +309,58 @@ public class BusinessReportRepository {
         BusinessReport report = new BusinessReport(id, year, month, revenue, expenses, profitOrLoss, growth, generatedAt);
         return report;
     }
+    // ==========================================================
+    // 8) Get total revenue from all business reports
+    // ==========================================================
+    public double getTotalRevenue() {
+        double totalRevenue = 0.0;
+        String sql = "SELECT SUM(total_revenue) AS total_revenue FROM business_report;";
+        try (Connection connection = management.formConnection();
+             PreparedStatement ps = connection.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            if (rs.next()) {
+                totalRevenue = rs.getDouble("total_revenue");
+            }
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return totalRevenue;
+    }
+
+    // ==========================================================
+    // 9) Calculate occupancy rate from the room table
+    // (occupied or booked rooms / total rooms * 100)
+    // ==========================================================
+    public double calculateOccupancyRate() {
+        double occupancyRate = 0.0;
+        String totalRoomsQuery = "SELECT COUNT(*) AS total_rooms FROM room;";
+        String occupiedRoomsQuery = "SELECT COUNT(*) AS occupied_rooms FROM room WHERE status IN ('BOOKED', 'OCCUPIED');";
+
+        try (Connection connection = management.formConnection();
+             PreparedStatement totalStmt = connection.prepareStatement(totalRoomsQuery);
+             PreparedStatement occupiedStmt = connection.prepareStatement(occupiedRoomsQuery)) {
+
+            int totalRooms = 0;
+            int occupiedRooms = 0;
+
+            try (ResultSet totalSet = totalStmt.executeQuery()) {
+                if (totalSet.next()) totalRooms = totalSet.getInt("total_rooms");
+            }
+            try (ResultSet occupiedSet = occupiedStmt.executeQuery()) {
+                if (occupiedSet.next()) occupiedRooms = occupiedSet.getInt("occupied_rooms");
+            }
+
+            if (totalRooms > 0) {
+                occupancyRate = (occupiedRooms * 100.0) / totalRooms;
+            }
+
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return occupancyRate;
+    }
+
 }

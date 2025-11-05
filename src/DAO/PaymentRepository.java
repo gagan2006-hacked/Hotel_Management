@@ -1,5 +1,6 @@
 package DAO;
 
+import DBConnection.ConnectionMangement;
 import Data.Enums.PaymentMode;
 import Data.Enums.PaymentStatus;
 import Data.Insertion.Payment;
@@ -26,15 +27,19 @@ import java.util.List;
 public class PaymentRepository {
     private Connection connection;
 
-    public PaymentRepository(Connection connection) {
-        this.connection = connection;
+    public PaymentRepository() {
+        try {
+            this.connection = new ConnectionMangement().formConnection();
+        } catch (SQLException e) {
+
+        }
     }
 
     // ===========================================================
     // 1️⃣  Create a new payment
     // ===========================================================
     public boolean createPayment(Payment payment) throws SQLException {
-        String query = "INSERT INTO payment (booking_id, payment_mode, amount, payment_status, payment_date) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO payment (booking_id, payment_mode, amount, payment_status, payment_date) VALUES (?, ?, ?, ?, ?);";
         try (PreparedStatement ps = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             ps.setInt(1, payment.getBooking_id());
             ps.setString(2, payment.getPayment_mode().getValue());
@@ -59,7 +64,7 @@ public class PaymentRepository {
     // 2️⃣  Get payment details by payment_id
     // ===========================================================
     public Payment getPaymentById(int paymentId) throws SQLException {
-        String query = "SELECT * FROM payment WHERE payment_id = ?";
+        String query = "SELECT * FROM payment WHERE payment_id = ?;";
         try (PreparedStatement ps = connection.prepareStatement(query)) {
             ps.setInt(1, paymentId);
             ResultSet rs = ps.executeQuery();
@@ -76,7 +81,7 @@ public class PaymentRepository {
     // ===========================================================
     public List<Payment> getPaymentsByBookingId(int bookingId) throws SQLException {
         List<Payment> payments = new ArrayList<>();
-        String query = "SELECT * FROM payment WHERE booking_id = ?";
+        String query = "SELECT * FROM payment WHERE booking_id = ?;";
 
         try (PreparedStatement ps = connection.prepareStatement(query)) {
             ps.setInt(1, bookingId);
@@ -93,7 +98,7 @@ public class PaymentRepository {
     // 4️⃣  Update payment status
     // ===========================================================
     public boolean updatePaymentStatus(int paymentId, PaymentStatus newStatus) throws SQLException {
-        String query = "UPDATE payment SET payment_status = ? WHERE payment_id = ?";
+        String query = "UPDATE payment SET payment_status = ? WHERE payment_id = ?;";
         try (PreparedStatement ps = connection.prepareStatement(query)) {
             ps.setString(1, newStatus.getValue());
             ps.setInt(2, paymentId);
@@ -106,7 +111,7 @@ public class PaymentRepository {
     // ===========================================================
     public List<Payment> getCompletedPayments() throws SQLException {
         List<Payment> payments = new ArrayList<>();
-        String query = "SELECT * FROM payment WHERE payment_status = 'completed'";
+        String query = "SELECT * FROM payment WHERE payment_status = 'completed';";
 
         try (Statement st = connection.createStatement();
              ResultSet rs = st.executeQuery(query)) {
@@ -122,7 +127,7 @@ public class PaymentRepository {
     // 6️⃣  Get total revenue from completed payments
     // ===========================================================
     public double getTotalRevenue() throws SQLException {
-        String query = "SELECT SUM(amount) AS total_revenue FROM payment WHERE payment_status = 'completed'";
+        String query = "SELECT SUM(amount) AS total_revenue FROM payment WHERE payment_status = 'completed';";
         try (Statement st = connection.createStatement();
              ResultSet rs = st.executeQuery(query)) {
 
@@ -138,7 +143,7 @@ public class PaymentRepository {
     // ===========================================================
     public List<Payment> getPaymentsByMode(PaymentMode mode) throws SQLException {
         List<Payment> payments = new ArrayList<>();
-        String query = "SELECT * FROM payment WHERE payment_mode = ?";
+        String query = "SELECT * FROM payment WHERE payment_mode = ?;";
 
         try (PreparedStatement ps = connection.prepareStatement(query)) {
             ps.setString(1, mode.getValue());
@@ -178,5 +183,27 @@ public class PaymentRepository {
         payment.setPayment_id(payment_id);
 
         return payment;
+    }
+    public List<Payment> getAllPayments(){
+        try {
+            List<Payment> payments = new ArrayList<>();
+            String query = "SELECT * FROM payment ;";
+            PreparedStatement statement=connection.prepareStatement(query);
+            ResultSet set=statement.executeQuery();
+            while (set.next()){
+                int payment_id=set.getInt("payment_id");
+                int booking_id=set.getInt("booking_id");
+                PaymentMode payment_mode= PaymentMode.setValue(set.getString("payment_mode"));
+                double amount=set.getInt("amount");
+                PaymentStatus payment_status=PaymentStatus.setValue("payment_status");
+                LocalDateTime payment_date=set.getTimestamp("payment_date").toLocalDateTime();
+                Payment p=new Payment(payment_id,booking_id,payment_mode,amount,payment_status,payment_date);
+                payments.add(p);
+            }
+            return payments;
+        }catch (SQLException e){
+
+        }
+        return null;
     }
 }

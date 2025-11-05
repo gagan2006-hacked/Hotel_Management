@@ -23,6 +23,18 @@ public class Payment {
     private PaymentStatus payment_status;
     private LocalDateTime payment_date;
 
+    public Payment(){
+
+    }
+    public Payment(int payment_id, int booking_id, PaymentMode payment_mode, double amount, PaymentStatus payment_status, LocalDateTime payment_date) {
+        this.payment_id = payment_id;
+        this.booking_id = booking_id;
+        this.payment_mode = payment_mode;
+        this.amount = amount;
+        this.payment_status = payment_status;
+        this.payment_date = payment_date;
+    }
+
     public Payment(int booking_id, PaymentMode payment_mode, double amount, PaymentStatus payment_status, LocalDateTime payment_date) {
         this.booking_id = booking_id;
         this.payment_mode = payment_mode;
