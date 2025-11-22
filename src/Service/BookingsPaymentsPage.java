@@ -30,7 +30,7 @@ public class BookingsPaymentsPage extends JFrame {
 
     BookingRepository bookRepo=new BookingRepository();
     PaymentRepository paymentRepository=new PaymentRepository();
-    ImageIcon i=new ImageIcon("D:\\Hotel_Mangement\\icon.jpg");
+    ImageIcon i=new ImageIcon("D:\\hotel\\Hotel_Management\\assest\\icon.jpg");
 
     JTable table;
     JTable paymentTable;

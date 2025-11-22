@@ -14,7 +14,7 @@ import java.util.*;
 import java.util.List;
 
 public class ManageRoomsPage extends JFrame implements ActionListener {
-    ImageIcon i=new ImageIcon("D:\\Hotel_Mangement\\icon.jpg");
+    ImageIcon i=new ImageIcon("D:\\hotel\\Hotel_Management\\assest\\icon.jpg");
     RoomRepository roomRepository=new RoomRepository();
     JTextField roomNumberField,priceField;
     JComboBox<String> typeBox,statusBox,searchBox;

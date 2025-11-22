@@ -25,7 +25,7 @@ public class StaffPage extends JFrame implements ActionListener {
     JButton addStaffBtn,saveStaffBtn,submitBtn,updateBtn,deleteBtn,statusBtn,searchBtn,refreshBtn,dashBoard;
     JComboBox<String> searchChoice, role;
     JTextField nameField,salaryField,contactField,joiningDateField;
-    ImageIcon i=new ImageIcon("D:\\Hotel_Mangement\\icon.jpg");
+    ImageIcon i=new ImageIcon("D:\\hotel\\Hotel_Management\\assest\\icon.jpg");
     String[] item = {
             "Cleaner","Manager","Receptionist",
     };

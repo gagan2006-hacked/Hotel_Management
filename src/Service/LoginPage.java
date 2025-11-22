@@ -14,7 +14,7 @@ public class LoginPage extends JFrame {
 
     static int chances=0;
 
-    ImageIcon i=new ImageIcon("D:\\Hotel_Mangement\\icon.jpg");
+    ImageIcon i=new ImageIcon("D:\\hotel\\Hotel_Management\\assest\\icon.jpg");
     public LoginPage() {
         if (chances>=5){
             JOptionPane.showMessageDialog(this,"Sorry to many Tries, Try again later ");

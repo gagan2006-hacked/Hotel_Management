@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ReportsPage extends JFrame {
     BusinessReportRepository reportRepository=new BusinessReportRepository();
-   static ImageIcon i=new ImageIcon("D:\\Hotel_Mangement\\icon.jpg");
+   static ImageIcon i=new ImageIcon("D:\\hotel\\Hotel_Management\\assest\\icon.jpg");
 
    JPanel panel=new JPanel();
     public ReportsPage() {

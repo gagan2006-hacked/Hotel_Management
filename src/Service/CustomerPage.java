@@ -19,7 +19,7 @@ public class CustomerPage extends JFrame implements ActionListener {
     private DefaultTableModel tableModel;
     CustomerRepository repo;
 
-    static ImageIcon i = new ImageIcon("D:\\Hotel_Mangement\\icon.jpg");
+    static ImageIcon i = new ImageIcon("D:\\hotel\\Hotel_Management\\assest\\icon.jpg");
 
     public CustomerPage() {
         super("Customer Page");   // frame title

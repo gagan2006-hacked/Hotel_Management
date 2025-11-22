@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.Stack;
 
 public class HotelServicePage extends JFrame implements ActionListener {
-    ImageIcon i=new ImageIcon("D:\\Hotel_Mangement\\icon.jpg");
+    ImageIcon i=new ImageIcon("D:\\hotel\\Hotel_Management\\assest\\icon.jpg");
     JButton roomBtn,customerBtn,staffBtn,bookingBtn,paymentBtn,reportBtn,signOut;
     public HotelServicePage() {
         setTitle("Hotel Management System - DashBoard");
