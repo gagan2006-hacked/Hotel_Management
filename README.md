@@ -18,6 +18,7 @@ Reports
 The project follows a clean layered architecture for easy maintenance and scalability.
 
 🚀 Features
+
 ✔ Customer Management
 
 Add, edit, and delete customer records
